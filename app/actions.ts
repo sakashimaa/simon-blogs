@@ -12,9 +12,7 @@ import { requireUser } from "@/utils/requireUser";
 import { ApiResponse } from "@/lib/api-response";
 import { stripe } from "@/utils/stripe";
 
-export async function createSiteAction(
-  formData: SiteSchemaType
-): Promise<ApiResponse> {
+export async function createSiteAction(formData: SiteSchemaType) {
   try {
     const user = await requireUser();
 
