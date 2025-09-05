@@ -39,8 +39,8 @@ export default function CreateNewSitePage() {
 
   async function handleSubmit(values: SiteSchemaType) {
     const result = await createSiteAction(values);
-    if (result.status === "error") {
-      toast.error(result.message);
+    if (result?.status === "error") {
+      toast.error(result?.message);
     } else {
       toast.success("Site created successfully");
     }
