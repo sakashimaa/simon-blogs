@@ -126,6 +126,8 @@ export async function CreateSubscription() {
     });
   }
 
+  const isProduction = process.env.NODE_ENV === "production";
+
   const session = await stripe.checkout.sessions.create({
     customer: stripeUserId.customerId as string,
     mode: "subscription",
@@ -135,8 +137,12 @@ export async function CreateSubscription() {
       address: "auto",
       name: "auto",
     },
-    success_url: "http://localhost:3000/dashboard/payment/success",
-    cancel_url: "http://localhost:3000/dashboard/payment/cancelled",
+    success_url: isProduction
+      ? "https://simon-blogs.vercel.app/dashboard/payment/success"
+      : "http://localhost:3000/dashboard/payment/success",
+    cancel_url: isProduction
+      ? "https://simon-blogs.vercel.app/dashboard/payment/cancelled"
+      : "http://localhost:3000/dashboard/payment/cancelled",
     line_items: [{ price: process.env.STRIPE_PRICE_ID as string, quantity: 1 }],
   });
 
