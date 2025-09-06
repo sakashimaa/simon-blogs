@@ -135,8 +135,8 @@ export async function CreateSubscription() {
       address: "auto",
       name: "auto",
     },
-    success_url: `${process.env.NEXT_PUBLIC_APP_URL}/dashboard/payment/success`,
-    cancel_url: `${process.env.NEXT_PUBLIC_APP_URL}/dashboard/payment/cancelled`,
+    success_url: "http://localhost:3000/dashboard/payment/success",
+    cancel_url: "http://localhost:3000/dashboard/payment/cancelled",
     line_items: [{ price: process.env.STRIPE_PRICE_ID as string, quantity: 1 }],
   });
 
