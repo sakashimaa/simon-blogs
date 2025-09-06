@@ -29,5 +29,9 @@ export async function GET() {
     });
   }
 
-  return NextResponse.redirect(`${process.env.NEXT_PUBLIC_SITE_URL}/dashboard`);
+  return NextResponse.redirect(
+    process.env.NODE_ENV === "production"
+      ? `https://simon-blogs.vercel.app/dashboard`
+      : `http://localhost:3000/dashboard`
+  );
 }

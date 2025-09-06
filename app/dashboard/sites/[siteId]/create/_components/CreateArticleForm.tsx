@@ -13,6 +13,7 @@ import {
 import {
   Form,
   FormControl,
+  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -194,6 +195,10 @@ export function CreateArticleForm({ siteId }: iAppProps) {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Article Content</FormLabel>
+                    <FormDescription>
+                      Type "/" to open the command menu and add headings, lists,
+                      quotes, code blocks, and more.
+                    </FormDescription>
                     <FormControl>
                       <div className="grid gap-2">
                         <input
